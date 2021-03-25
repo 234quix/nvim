@@ -41,6 +41,44 @@
   "diagnostic.warningSign": " ",
   "diagnostic.infoSign": "",
   "diagnostic.hintSign": " ",
+  "diagnostic-languageserver.filetypes": {
+    "python": "pylint"
+  },
+  "diagnostic-languageserver.linters": {
+    "pylint": {
+      "sourceName": "pylint",
+      "command": "pylint",
+      "args": [
+        "--output-format",
+        "text",
+        "--score",
+        "no",
+        "--msg-template",
+        "'{line}:{column}:{category}:{msg} ({msg_id}:{symbol})'",
+        "%file"
+      ],
+      "formatPattern": [
+        "^(\\d+?):(\\d+?):([a-z]+?):(.*)$",
+        {
+          "line": 1,
+          "column": 2,
+          "security": 3,
+          "message": 4
+        }
+      ],
+      "rootPatterns": [".git", "pyproject.toml", "setup.py"],
+      "securities": {
+        "informational": "hint",
+        "refactor": "info",
+        "convention": "info",
+        "warning": "warning",
+        "error": "error",
+        "fatal": "error"
+      },
+      "offsetColumn": 1,
+      "formatLines": 1
+    }
+  },
   // "diagnostic.displayByAle": true,
   // "diagnostic.virtualText": true, // this won't work with codelens when error on same line
 
@@ -70,35 +108,32 @@
   "coc.preferences.hoverTarget": "float",
 
   // python config
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.autoSearchPaths": true,
-  "python.analysis.diagnosticMode": "openFilesOnly",
-  "python.analysis.stubPath": "typings",
-  "python.analysis.typeshedPaths": [],
-  "python.analysis.diagnosticSeverityOverrides": {},
-  "python.analysis.typeCheckingMode": "basic",
-  "python.analysis.useLibraryCodeForTypes": true,
-  "python.pythonPath": "python",
-  "python.venvPath": "",
-  "python.formatting.provider": "black",
-  "python.formatting.blackPath": "~/.local/bin/black",
-  "python.formatting.blackArgs": [],
-  "python.formatting.autopep8Path": "autopep8",
-  "python.formatting.autopep8Args": [],
-  "python.formatting.yapfPath": "yapf",
-  "python.formatting.yapfArgs": [],
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": false,
-  "python.linting.banditEnabled": false,
-  "python.linting.mypyEnabled": false,
-  "python.linting.pytypeEnabled": false,
-  "python.linting.prospectorEnabled": false,
-  "python.linting.pydocstyleEnabled": false,
-  "python.linting.pylamaEnabled": false,
-  "python.linting.pylintEnabled": false,
-  "pyright.disableCompletion": false,
-  "pyright.disableLanguageServices": false,
-  "pyright.disableOrganizeImports": false,
+  /* "python.analysis.autoImportCompletions": true, */
+  /* "python.analysis.autoSearchPaths": true, */
+  /* "python.analysis.diagnosticMode": "openFilesOnly", */
+  /* "python.analysis.stubPath": "typings", */
+  /* "python.analysis.typeshedPaths": [], */
+  /* "python.analysis.diagnosticSeverityOverrides": {}, */
+  /* "python.analysis.typeCheckingMode": "basic", */
+  /* "python.analysis.useLibraryCodeForTypes": true, */
+  /* "python.pythonPath": "~/.pyenv/shims/python", */
+  /* "python.venvPath": "", */
+  /* "python.formatting.provider": "black", */
+  /* "python.formatting.blackPath": "~/.local/bin/black", */
+  /* "python.formatting.blackArgs": [], */
+  /* "python.formatting.autopep8Path": "autopep8", */
+  /* "python.formatting.autopep8Args": [], */
+  /* "python.formatting.yapfPath": "yapf", */
+  /* "python.formatting.yapfArgs": [], */
+  /* "python.linting.enabled": true, */
+  /* "python.linting.flake8Enabled": false, */
+  /* "python.linting.banditEnabled": false, */
+  /* "python.linting.mypyEnabled": false, */
+  /* "python.linting.pytypeEnabled": false, */
+  /* "python.linting.prospectorEnabled": false, */
+  /* "python.linting.pydocstyleEnabled": false, */
+  /* "python.linting.pylamaEnabled": false, */
+  /* "python.linting.pylintEnabled": false, */
 
   // snippets
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snips"],
@@ -136,10 +171,28 @@
   /*   } */
   /* }, */
 
-  "bookmark.sign": "",
+  //jedi
+  "jedi.enable": true,
+  "jedi.startupMessage": false,
+  "jedi.markupKindPreferred": "plaintext",
+  "jedi.trace.server": "off",
+  "jedi.jediSettings.autoImportModules": ["pandas", "numpy"],
+  "jedi.executable.command": "/Users/noirin.duggan/.pyenv/shims/jedi-language-server",
+  "jedi.executable.args": [],
+  "jedi.completion.disableSnippets": false,
+  "jedi.completion.resolveEagerly": false,
+  "jedi.diagnostics.enable": true,
+  "jedi.diagnostics.didOpen": true,
+  "jedi.diagnostics.didChange": true,
+  "jedi.diagnostics.didSave": true,
+  "jedi.workspace.extraPaths": ["ai-health-insights/noirin"],
+  "jedi.workspace.symbols.maxSymbols": 20,
+  "jedi.workspace.symbols.ignoreFolders": [".nox", ".tox", ".venv", "__pycache__", "venv"],
+
+  /* "bookmark.sign": "", */
 
   //coc-emoji
-  "coc.source.emoji.filetypes": ["markdown"]
+  "coc.source.emoji.filetypes": ["markdown"],
 
   // lua
   //"lua.useSumnekoLs": true,

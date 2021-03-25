@@ -9,15 +9,30 @@ let mapleader=" "
 " let localleader=" "
 nnoremap <Space> <Nop>
 
+" run current python file
+au BufNewFile,BufRead *.py nnoremap <leader>r :w<CR>:!python3 %<CR>
+
+" ###################        Noirin stuff  #######################
+" Read an empty python template and move cursor to title TODO Noirin figure out why this is being over ridden
+nnoremap \p :-1read $HOME/.config/nvim/.skeleton.py<CR>
+nnoremap \o :-1read $HOME/.config/nvim/.skeleton2.py<CR>
+nnoremap \t :-1read $HOME/.config/nvim/.skeleton.tex<CR>
+" This command maps the <F5> key to change to the directory of the current file and then display the current directory. 
+nnoremap  <special> <F5> :lchdir %:p:h<CR>:pwd<CR>
+" ###################    End  Noirin stuff  #######################
+
+
 " Better indenting
 vnoremap < <gv
 vnoremap > >gv
 
+
+
 if exists('g:vscode')
 
   " Simulate same TAB behavior in VSCode
-  nmap <Tab> :Tabnext<CR>
-  nmap <S-Tab> :Tabprev<CR>
+  " nmap <Tab> :Tabnext<CR>
+  " nmap <S-Tab> :Tabprev<CR>
 
 else
 
@@ -95,3 +110,6 @@ endif
 " Better nav for omnicomplete
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
+
+" SNIPPETS:
+
